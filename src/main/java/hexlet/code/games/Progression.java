@@ -4,6 +4,8 @@ import hexlet.code.Engine;
 
 import java.util.Random;
 
+import static hexlet.code.Helper.generateNumber;
+
 public class Progression {
 
     static int firstNumber;
@@ -38,11 +40,6 @@ public class Progression {
         if (count == 3) {
             System.out.println("Congratulations, " + userName + "!");
         }
-    }
-
-    private static int generateNumber(int n) {
-        Random random = new Random();
-        return random.nextInt(n);
     }
 
     private static int[] generate() {
