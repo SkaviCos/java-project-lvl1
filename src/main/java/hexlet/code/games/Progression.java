@@ -14,7 +14,7 @@ public class Progression {
         var userName = Engine.greeting();
         var count = 0;
 
-        System.out.println("Please enter the game number and press Enter.");
+        System.out.println("What number is missing in the progression?");
 
         for (int i = 0; i < 3; i++) {
             var progression = generate();

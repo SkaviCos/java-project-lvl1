@@ -7,3 +7,4 @@
 ### [Ссылка на запись работы программа Calc game](https://asciinema.org/a/A7plO33yOpgOAWht9fVNF2Nvk)
 ### [Ссылка на запись работы программа Gcd game](https://asciinema.org/a/On7ukHJQdWGkLcPEYHrd1cUmO)
 ### [Ссылка на запись работы программа Progression game](https://asciinema.org/a/2w182UFIfftu9hLnfeXfTp844)
+### [Ссылка на запись работы программа Prime game](https://asciinema.org/a/ZYrczdTKijGHVJ4lDYca5qvnL)
