@@ -4,7 +4,6 @@ import hexlet.code.Engine;
 
 public class Calc {
 
-
     public static void calcGame() {
         var userName = Engine.greeting();
         var count = 0;
@@ -23,6 +22,7 @@ public class Calc {
                     count++;
                 } else {
                     System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + calcAnswer + "'.");
+                    System.out.println("Let's try again, " + userName + "!");
                     break;
                 }
             }
@@ -35,6 +35,7 @@ public class Calc {
                     count++;
                 } else {
                     System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + calcAnswer + "'.");
+                    System.out.println("Let's try again, " + userName + "!");
                     break;
                 }
             }
@@ -47,6 +48,7 @@ public class Calc {
                     count++;
                 } else {
                     System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + calcAnswer + "'.");
+                    System.out.println("Let's try again, " + userName + "!");
                     break;
                 }
             }
