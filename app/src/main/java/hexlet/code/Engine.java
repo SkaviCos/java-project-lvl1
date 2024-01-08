@@ -3,15 +3,17 @@ package hexlet.code;
 import java.util.Scanner;
 
 public class Engine {
-    public static String[] answer = new String[3];
-    static Scanner scanner = new Scanner(System.in).useDelimiter("\n");
+
+    private static final int COUNT = 3;
+    private static final String[] ANSWER = new String[COUNT];
+    private static final Scanner SCANNER = new Scanner(System.in).useDelimiter("\n");
 
     public static String greeting() {
 
         System.out.println("Welcome to the Brain Games!");
 
         System.out.print("May I have your name? ");
-        String userName = scanner.next();
+        String userName = SCANNER.next();
         System.out.println("Hello, " + userName + "!");
         return userName;
     }
@@ -19,14 +21,14 @@ public class Engine {
     public static void startGame(String gameRule, String[] calcAnswer, String[] question) {
         var userName = Engine.greeting();
         System.out.println(gameRule);
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < COUNT; i++) {
             System.out.println("Question: " + question[i]);
-            answer[i] = Engine.answer();
+            ANSWER[i] = Engine.answer();
 
-            if (calcAnswer[i].equalsIgnoreCase(answer[i])) {
+            if (calcAnswer[i].equalsIgnoreCase(ANSWER[i])) {
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + answer[i] + "' is wrong answer ;(. Correct answer was '"
+                System.out.println("'" + ANSWER[i] + "' is wrong answer ;(. Correct answer was '"
                         + calcAnswer[i] + "'.");
                 System.out.println("Let's try again, " + userName + "!");
                 return;
@@ -36,16 +38,9 @@ public class Engine {
 
     }
 
-    public static String question() {
-        var question = "";
-        System.out.print("Question: ");
-        question += scanner.next();
-        return question;
-    }
-
-    public static String answer() {
+    private static String answer() {
         System.out.print("Your answer: ");
-        return scanner.next();
+        return SCANNER.next();
     }
 
 }

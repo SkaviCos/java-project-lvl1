@@ -8,12 +8,13 @@ import static hexlet.code.Helper.generateNumber;
 public class Progression {
 
     private static final int COUNT = 3;
+    private static final int ORIGIN = 5;
     private static final int GENERATE_COUNT = 11;
     private static final String GAME_RULE = "What number is missing in the progression?";
     private static final String[] QUESTION = new String[COUNT];
     private static final String[] CALC_ANSWER = new String[COUNT];
-    static int firstNumber;
-    static int delta;
+    private static int firstNumber;
+    private static int delta;
 
     public static void progressionGame() {
 
@@ -31,7 +32,7 @@ public class Progression {
 
     private static int[] generate() {
         Random random = new Random();
-        int length = random.nextInt(5, 11);
+        int length = random.nextInt(ORIGIN, GENERATE_COUNT);
         int[] progression = new int[length];
         firstNumber = generateNumber(GENERATE_COUNT);
         delta = generateNumber(COUNT) + 1;
