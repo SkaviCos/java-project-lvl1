@@ -22,12 +22,6 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
-}
-
 tasks.getByName("run", JavaExec::class) {
     standardInput = System.`in`
 }
