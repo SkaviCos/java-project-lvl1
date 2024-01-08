@@ -1,63 +1,41 @@
 package hexlet.code.games;
 
-import hexlet.code.Engine;
+import java.util.Random;
+
+import static hexlet.code.Engine.startGame;
+import static hexlet.code.Helper.generateNumber;
 
 public class Calc {
+    private static final String GAME_RULE = "What is the result of the expression?";
+
+    public static String[] question = new String[3];
+    public static String[] calcAnswer = new String[3];
+
 
     public static void calcGame() {
-        var userName = Engine.greeting();
-        var count = 0;
+        Random random = new Random();
+        String[] operators = {"+", "-", "*"};
 
-        System.out.println("What is the result of the expression?");
         for (int i = 0; i < 3; i++) {
-            var question = Engine.question();
-            var answer = Engine.answer();
-            var calcAnswer = 0;
-
-            if (question.contains("*")) {
-                calcAnswer = Integer.parseInt(question.replace(" * ", " ").split(" ")[0])
-                        * Integer.parseInt(question.replace(" * ", " ").split(" ")[1]);
-                if (calcAnswer == Integer.parseInt(answer)) {
-                    System.out.println("Correct!");
-                    count++;
-                } else {
-                    System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + calcAnswer + "'.");
-                    System.out.println("Let's try again, " + userName + "!");
-                    break;
-                }
-            }
-
-            if (question.contains("+")) {
-                calcAnswer = Integer.parseInt(question.replace(" + ", " ").split(" ")[0])
-                        + Integer.parseInt(question.replace(" + ", " ").split(" ")[1]);
-                if (calcAnswer == Integer.parseInt(answer)) {
-                    System.out.println("Correct!");
-                    count++;
-                } else {
-                    System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + calcAnswer + "'.");
-                    System.out.println("Let's try again, " + userName + "!");
-                    break;
-                }
-            }
-
-            if (question.contains("-")) {
-                calcAnswer = Integer.parseInt(question.replace(" - ", " ").split(" ")[0])
-                        - Integer.parseInt(question.replace(" - ", " ").split(" ")[1]);
-                if (calcAnswer == Integer.parseInt(answer)) {
-                    System.out.println("Correct!");
-                    count++;
-                } else {
-                    System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + calcAnswer + "'.");
-                    System.out.println("Let's try again, " + userName + "!");
-                    break;
-                }
-            }
-
+            int randomOperatorIndex = random.nextInt(operators.length);
+            String operator = operators[randomOperatorIndex];
+            var firstNum = generateNumber(10);
+            var secondNum = generateNumber(10);
+            question[i] = (firstNum + " " + operator + " " + secondNum);
+            calcAnswer[i] = String.valueOf(resultOfOperation(operator, firstNum, secondNum));
         }
 
-        if (count == 3) {
-            System.out.println("Congratulations, " + userName + "!");
-        }
+        startGame(GAME_RULE, calcAnswer, question);
+
+    }
+
+    private static int resultOfOperation(String operation, int firstNum, int secondNum) {
+        return switch (operation) {
+            case "+" -> firstNum + secondNum;
+            case "-" -> firstNum - secondNum;
+            case "*" -> firstNum * secondNum;
+            default -> 0;
+        };
     }
 
 }

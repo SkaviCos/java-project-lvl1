@@ -16,7 +16,7 @@ public class Engine {
         return userName;
     }
 
-    public static void startGame(String gameRule, String[] calcAnswer, int[] question) {
+    public static void startGame(String gameRule, String[] calcAnswer, String[] question) {
         var userName = Engine.greeting();
         System.out.println(gameRule);
         for (int i = 0; i < 3; i++) {
