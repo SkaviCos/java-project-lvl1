@@ -1,45 +1,30 @@
 package hexlet.code.games;
 
-import hexlet.code.Engine;
-
 import java.util.Random;
 
+import static hexlet.code.Engine.startGame;
 import static hexlet.code.Helper.generateNumber;
 
 public class Progression {
 
+    private static final String GAME_RULE = "What number is missing in the progression?";
+    public static String[] question = new String[3];
+    public static String[] calcAnswer = new String[3];
     static int firstNumber;
     static int delta;
 
     public static void progressionGame() {
 
-        var userName = Engine.greeting();
-        var count = 0;
-
-        System.out.println("What number is missing in the progression?");
-
         for (int i = 0; i < 3; i++) {
             var progression = generate();
             var hiddenIndex = generateNumber(progression.length);
             var progressionQuestion = buildQuestion(progression, hiddenIndex);
-            System.out.println("Question: " + progressionQuestion);
 
-            var answer = Engine.answer();
+            question[i] = progressionQuestion;
+            calcAnswer[i] = String.valueOf(progression[hiddenIndex]);
 
-            if (Integer.parseInt(answer) == progression[hiddenIndex]) {
-                System.out.println("Correct!");
-                count++;
-            } else {
-                System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '"
-                        + progression[hiddenIndex] + "'.");
-                System.out.println("Let's try again, " + userName + "!");
-                break;
-            }
         }
-
-        if (count == 3) {
-            System.out.println("Congratulations, " + userName + "!");
-        }
+        startGame(GAME_RULE, calcAnswer, question);
     }
 
     private static int[] generate() {
