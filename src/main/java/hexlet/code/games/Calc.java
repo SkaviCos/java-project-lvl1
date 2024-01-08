@@ -23,9 +23,7 @@ public class Calc {
             question[i] = (firstNum + " " + operator + " " + secondNum);
             calcAnswer[i] = String.valueOf(resultOfOperation(operator, firstNum, secondNum));
         }
-
         startGame(GAME_RULE, calcAnswer, question);
-
     }
 
     private static int resultOfOperation(String operation, int firstNum, int secondNum) {

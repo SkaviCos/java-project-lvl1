@@ -21,7 +21,6 @@ public class GCD {
             calcAnswer[i] = String.valueOf(gcdAlgorithm(firstNum, secondNum));
 
         }
-
         startGame(GAME_RULE, calcAnswer, question);
     }
 
