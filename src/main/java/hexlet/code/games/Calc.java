@@ -7,7 +7,6 @@ import static hexlet.code.Helper.generateNumber;
 
 public class Calc {
     private static final String GAME_RULE = "What is the result of the expression?";
-
     public static String[] question = new String[3];
     public static String[] calcAnswer = new String[3];
 

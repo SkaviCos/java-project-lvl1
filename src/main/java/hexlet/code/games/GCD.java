@@ -1,8 +1,29 @@
 package hexlet.code.games;
 
-import hexlet.code.Engine;
+import static hexlet.code.Engine.startGame;
+import static hexlet.code.Helper.generateNumber;
+
 
 public class GCD {
+
+    private static final String GAME_RULE = "Find the greatest common divisor of given numbers.";
+    public static String[] question = new String[3];
+    public static String[] calcAnswer = new String[3];
+
+    public static void gcdGame() {
+
+        for (int i = 0; i < 3; i++) {
+
+            var firstNum = generateNumber(100);
+            var secondNum = generateNumber(100);
+
+            question[i] = (firstNum + " " + secondNum);
+            calcAnswer[i] = String.valueOf(gcdAlgorithm(firstNum, secondNum));
+
+        }
+
+        startGame(GAME_RULE, calcAnswer, question);
+    }
 
     private static int gcdAlgorithm(int first, int second) {
         while (first != second) {
@@ -14,35 +35,5 @@ public class GCD {
         }
         return first;
     }
-
-    public static void gcdGame() {
-        var userName = Engine.greeting();
-        var count = 0;
-
-        System.out.println("Find the greatest common divisor of given numbers.");
-        for (int i = 0; i < 3; i++) {
-            var question = Engine.question();
-            var answer = Engine.answer();
-
-            var first = Integer.parseInt(question.split(" ")[0]);
-            var second = Integer.parseInt(question.split(" ")[1]);
-
-            var calcAnswer = gcdAlgorithm(first, second);
-
-            if (calcAnswer == Integer.parseInt(answer)) {
-                System.out.println("Correct!");
-                count++;
-            } else {
-                System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '" + calcAnswer + "'.");
-                System.out.println("Let's try again, " + userName + "!");
-                break;
-            }
-
-        }
-        if (count == 3) {
-            System.out.println("Congratulations, " + userName + "!");
-        }
-    }
-
 
 }
