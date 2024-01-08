@@ -3,8 +3,9 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/9230ed2d388ddc9118d7/maintainability)](https://codeclimate.com/github/SkaviCos/java-project-lvl1/maintainability)
 
-### [Ссылка на запись работы программы Even game](https://asciinema.org/connect/35d3a6ed-0ac2-49d2-9777-166f68197a75)
-### [Ссылка на запись работы программа Calc game](https://asciinema.org/a/A7plO33yOpgOAWht9fVNF2Nvk)
-### [Ссылка на запись работы программа Gcd game](https://asciinema.org/a/On7ukHJQdWGkLcPEYHrd1cUmO)
-### [Ссылка на запись работы программа Progression game](https://asciinema.org/a/2w182UFIfftu9hLnfeXfTp844)
-### [Ссылка на запись работы программа Prime game](https://asciinema.org/a/ZYrczdTKijGHVJ4lDYca5qvnL)
+### [Демо работы приветствия](https://asciinema.org/a/uKSFGqHRxzsy8E1NQj9AW3a6G)
+### [Демо работы программы Even game](https://asciinema.org/a/FDYsPFEKyq4pjf7FkMqzTZMsQ)
+### [Демо работы программа Calc game](https://asciinema.org/a/aBpeLkvIV44DKjYIDfjRXrQz3)
+### [Демо работы программа Gcd game](https://asciinema.org/a/e9sgLz5r4fweDPIWrcn5QhjDh)
+### [Демо работы программа Progression game](https://asciinema.org/a/T9s13O8yb574P3hUIe626KofJ)
+### [Демо работы программа Prime game](https://asciinema.org/a/g3meQ7BmzoewuWtRxbzKkW64B)
