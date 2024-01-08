@@ -6,24 +6,26 @@ import static hexlet.code.Engine.startGame;
 import static hexlet.code.Helper.generateNumber;
 
 public class Calc {
-    private static final String GAME_RULE = "What is the result of the expression?";
-    public static String[] question = new String[3];
-    public static String[] calcAnswer = new String[3];
 
+    private static final int COUNT = 3;
+    private static final int GENERATE_COUNT = 10;
+    private static final String GAME_RULE = "What is the result of the expression?";
+    private static final String[] QUESTION = new String[COUNT];
+    private static final String[] CALC_ANSWER = new String[COUNT];
 
     public static void calcGame() {
         Random random = new Random();
         String[] operators = {"+", "-", "*"};
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < COUNT; i++) {
             int randomOperatorIndex = random.nextInt(operators.length);
             String operator = operators[randomOperatorIndex];
-            var firstNum = generateNumber(10);
-            var secondNum = generateNumber(10);
-            question[i] = (firstNum + " " + operator + " " + secondNum);
-            calcAnswer[i] = String.valueOf(resultOfOperation(operator, firstNum, secondNum));
+            var firstNum = generateNumber(GENERATE_COUNT);
+            var secondNum = generateNumber(GENERATE_COUNT);
+            QUESTION[i] = (firstNum + " " + operator + " " + secondNum);
+            CALC_ANSWER[i] = String.valueOf(resultOfOperation(operator, firstNum, secondNum));
         }
-        startGame(GAME_RULE, calcAnswer, question);
+        startGame(GAME_RULE, CALC_ANSWER, QUESTION);
     }
 
     private static int resultOfOperation(String operation, int firstNum, int secondNum) {

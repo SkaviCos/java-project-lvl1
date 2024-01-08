@@ -7,32 +7,34 @@ import static hexlet.code.Helper.generateNumber;
 
 public class Progression {
 
+    private static final int COUNT = 3;
+    private static final int GENERATE_COUNT = 11;
     private static final String GAME_RULE = "What number is missing in the progression?";
-    public static String[] question = new String[3];
-    public static String[] calcAnswer = new String[3];
+    private static final String[] QUESTION = new String[COUNT];
+    private static final String[] CALC_ANSWER = new String[COUNT];
     static int firstNumber;
     static int delta;
 
     public static void progressionGame() {
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < COUNT; i++) {
             var progression = generate();
             var hiddenIndex = generateNumber(progression.length);
             var progressionQuestion = buildQuestion(progression, hiddenIndex);
 
-            question[i] = progressionQuestion;
-            calcAnswer[i] = String.valueOf(progression[hiddenIndex]);
+            QUESTION[i] = progressionQuestion;
+            CALC_ANSWER[i] = String.valueOf(progression[hiddenIndex]);
 
         }
-        startGame(GAME_RULE, calcAnswer, question);
+        startGame(GAME_RULE, CALC_ANSWER, QUESTION);
     }
 
     private static int[] generate() {
         Random random = new Random();
         int length = random.nextInt(5, 11);
         int[] progression = new int[length];
-        firstNumber = generateNumber(11);
-        delta = generateNumber(3) + 1;
+        firstNumber = generateNumber(GENERATE_COUNT);
+        delta = generateNumber(COUNT) + 1;
         for (int i = 0; i < length; i++) {
             progression[i] = firstNumber + i * delta;
         }

@@ -6,22 +6,24 @@ import static hexlet.code.Helper.generateNumber;
 
 public class GCD {
 
+    private static final int COUNT = 3;
+    private static final int GENERATE_COUNT = 100;
     private static final String GAME_RULE = "Find the greatest common divisor of given numbers.";
-    public static String[] question = new String[3];
-    public static String[] calcAnswer = new String[3];
+    private static final String[] QUESTION = new String[COUNT];
+    private static final String[] CALC_ANSWER = new String[COUNT];
 
     public static void gcdGame() {
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < COUNT; i++) {
 
-            var firstNum = generateNumber(100);
-            var secondNum = generateNumber(100);
+            var firstNum = generateNumber(GENERATE_COUNT);
+            var secondNum = generateNumber(GENERATE_COUNT);
 
-            question[i] = (firstNum + " " + secondNum);
-            calcAnswer[i] = String.valueOf(gcdAlgorithm(firstNum, secondNum));
+            QUESTION[i] = (firstNum + " " + secondNum);
+            CALC_ANSWER[i] = String.valueOf(gcdAlgorithm(firstNum, secondNum));
 
         }
-        startGame(GAME_RULE, calcAnswer, question);
+        startGame(GAME_RULE, CALC_ANSWER, QUESTION);
     }
 
     private static int gcdAlgorithm(int first, int second) {
