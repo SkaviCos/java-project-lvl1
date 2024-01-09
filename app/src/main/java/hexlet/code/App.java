@@ -22,7 +22,7 @@ public class App {
         String numberGame = scanner.next();
 
         switch (numberGame) {
-            case "1" -> Engine.greeting();
+            case "1" -> Cli.greeting();
             case "2" -> Even.evenGame();
             case "3" -> Calc.calcGame();
             case "4" -> GCD.gcdGame();
