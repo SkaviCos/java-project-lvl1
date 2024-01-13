@@ -9,26 +9,31 @@ import static hexlet.code.Utils.generateNumber;
 
 public class Progression {
 
+    private static final int ROWS_COUNT = 3;
+    private static final int COLUMNS_COUNT = 2;
     private static final int COUNT = 3;
     private static final int ORIGIN = 5;
     private static final int GENERATE_COUNT = 11;
     private static final String GAME_RULE = "What number is missing in the progression?";
+    private static final String[][] QUESTION_AND_CALC_ANSWER = new String[ROWS_COUNT][COLUMNS_COUNT];
     private static int firstNumber;
     private static int delta;
-    public static final int ROWS_COUNT = 3;
-    public static final int COLUMNS_COUNT = 2;
-    private static final String[][] QUESTION_AND_CALC_ANSWER = new String[ROWS_COUNT][COLUMNS_COUNT];
+
+    public static String[][] generateRoundData(int i) {
+        var progression = generate();
+        var hiddenIndex = generateNumber(progression.length);
+        var progressionQuestion = buildQuestion(progression, hiddenIndex);
+
+        QUESTION_AND_CALC_ANSWER[i][0] = progressionQuestion;
+        QUESTION_AND_CALC_ANSWER[i][1] = String.valueOf(progression[hiddenIndex]);
+
+        return QUESTION_AND_CALC_ANSWER;
+    }
 
     public static void progressionGame() {
 
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
-            var progression = generate();
-            var hiddenIndex = generateNumber(progression.length);
-            var progressionQuestion = buildQuestion(progression, hiddenIndex);
-
-            QUESTION_AND_CALC_ANSWER[i][0] = progressionQuestion;
-            QUESTION_AND_CALC_ANSWER[i][1] = String.valueOf(progression[hiddenIndex]);
-
+            generateRoundData(i);
         }
         startGame(GAME_RULE, QUESTION_AND_CALC_ANSWER);
     }
