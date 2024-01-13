@@ -4,22 +4,22 @@ import java.util.Scanner;
 
 public class Engine {
 
-    private static final int COUNT = 3;
-    private static final String[] ANSWER = new String[COUNT];
-    private static final Scanner SCANNER = new Scanner(System.in).useDelimiter("\n");
+    public static final int ROUNDS_COUNT = 3;
+    public static final Scanner SCANNER = new Scanner(System.in);
 
-    public static void startGame(String gameRule, String[] calcAnswer, String[] question) {
+    public static void startGame(String gameRule, String[][] questionAndCalcAnswer) {
         var userName = Cli.greeting();
+        var answer = "";
         System.out.println(gameRule);
-        for (int i = 0; i < COUNT; i++) {
-            System.out.println("Question: " + question[i]);
-            ANSWER[i] = Engine.answer();
+        for (int i = 0; i < ROUNDS_COUNT; i++) {
+            System.out.println("Question: " + questionAndCalcAnswer[i][0]);
+            answer = Engine.answer();
 
-            if (calcAnswer[i].equalsIgnoreCase(ANSWER[i])) {
+            if (questionAndCalcAnswer[i][1].equalsIgnoreCase(answer)) {
                 System.out.println("Correct!");
             } else {
-                System.out.println("'" + ANSWER[i] + "' is wrong answer ;(. Correct answer was '"
-                        + calcAnswer[i] + "'.");
+                System.out.println("'" + answer + "' is wrong answer ;(. Correct answer was '"
+                        + questionAndCalcAnswer[i][1] + "'.");
                 System.out.println("Let's try again, " + userName + "!");
                 return;
             }

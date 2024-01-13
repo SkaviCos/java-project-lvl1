@@ -1,29 +1,31 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+
 import static hexlet.code.Engine.startGame;
-import static hexlet.code.Helper.generateNumber;
+import static hexlet.code.Utils.generateNumber;
 
 
 public class GCD {
 
-    private static final int COUNT = 3;
     private static final int GENERATE_COUNT = 100;
     private static final String GAME_RULE = "Find the greatest common divisor of given numbers.";
-    private static final String[] QUESTION = new String[COUNT];
-    private static final String[] CALC_ANSWER = new String[COUNT];
+    public static final int ROWS_COUNT = 3;
+    public static final int COLUMNS_COUNT = 2;
+    private static final String[][] QUESTION_AND_CALC_ANSWER = new String[ROWS_COUNT][COLUMNS_COUNT];
 
     public static void gcdGame() {
 
-        for (int i = 0; i < COUNT; i++) {
+        for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
 
             var firstNum = generateNumber(GENERATE_COUNT);
             var secondNum = generateNumber(GENERATE_COUNT);
 
-            QUESTION[i] = (firstNum + " " + secondNum);
-            CALC_ANSWER[i] = String.valueOf(gcdAlgorithm(firstNum, secondNum));
+            QUESTION_AND_CALC_ANSWER[i][0] = (firstNum + " " + secondNum);
+            QUESTION_AND_CALC_ANSWER[i][1] = String.valueOf(gcdAlgorithm(firstNum, secondNum));
 
         }
-        startGame(GAME_RULE, CALC_ANSWER, QUESTION);
+        startGame(GAME_RULE, QUESTION_AND_CALC_ANSWER);
     }
 
     private static int gcdAlgorithm(int first, int second) {
