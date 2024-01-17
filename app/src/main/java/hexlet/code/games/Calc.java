@@ -2,35 +2,36 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
+import static hexlet.code.Engine.ROUNDS_COUNT;
 import static hexlet.code.Engine.startGame;
 import static hexlet.code.Utils.generateNumber;
 
 public class Calc {
 
-    private static final int GENERATE_COUNT = 10;
+    private static final int NUMBER_LIMIT = 10;
     private static final String GAME_RULE = "What is the result of the expression?";
-    private static final int ROWS_COUNT = 3;
-    private static final int COLUMNS_COUNT = 2;
-    private static final String[][] QUESTION_AND_CALC_ANSWER = new String[ROWS_COUNT][COLUMNS_COUNT];
     private static final String[] OPERATORS = {"+", "-", "*"};
 
-    public static String[][] generateRoundData(int i) {
+    public static String[] generateRoundData() {
+        var questionAndCalcAnswer = new String[2];
+
         int randomOperatorIndex = generateNumber(OPERATORS.length);
         String operator = OPERATORS[randomOperatorIndex];
-        var firstNum = generateNumber(GENERATE_COUNT);
-        var secondNum = generateNumber(GENERATE_COUNT);
-        QUESTION_AND_CALC_ANSWER[i][0] = (firstNum + " " + operator + " " + secondNum);
-        QUESTION_AND_CALC_ANSWER[i][1] = String.valueOf(resultOfOperation(operator, firstNum, secondNum));
+        var firstNum = generateNumber(NUMBER_LIMIT);
+        var secondNum = generateNumber(NUMBER_LIMIT);
+        questionAndCalcAnswer[0] = (firstNum + " " + operator + " " + secondNum);
+        questionAndCalcAnswer[1] = String.valueOf(resultOfOperation(operator, firstNum, secondNum));
 
-        return QUESTION_AND_CALC_ANSWER;
+        return questionAndCalcAnswer;
     }
 
     public static void calcGame() {
+        var roundsData = new String[ROUNDS_COUNT][];
 
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
-            generateRoundData(i);
+            roundsData[i] = generateRoundData();
         }
-        startGame(GAME_RULE, QUESTION_AND_CALC_ANSWER);
+        startGame(GAME_RULE, roundsData);
     }
 
     private static int resultOfOperation(String operation, int firstNum, int secondNum) {
@@ -38,7 +39,7 @@ public class Calc {
             case "+" -> firstNum + secondNum;
             case "-" -> firstNum - secondNum;
             case "*" -> firstNum * secondNum;
-            default -> 0;
+            default -> throw new Error("Unknown operator");
         };
     }
 

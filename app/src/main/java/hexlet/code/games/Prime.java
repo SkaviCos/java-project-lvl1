@@ -2,31 +2,32 @@ package hexlet.code.games;
 
 import hexlet.code.Engine;
 
+import static hexlet.code.Engine.ROUNDS_COUNT;
 import static hexlet.code.Engine.startGame;
 import static hexlet.code.Utils.generateNumber;
 
 public class Prime {
 
-    private static final int ROWS_COUNT = 3;
-    private static final int COLUMNS_COUNT = 2;
-    private static final String[][] QUESTION_AND_CALC_ANSWER = new String[ROWS_COUNT][COLUMNS_COUNT];
-    private static final int GENERATE_COUNT = 100;
+    private static final int NUMBER_LIMIT = 100;
     private static final String GAME_RULE = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
 
-    public static String[][] generateRoundData(int i) {
-        QUESTION_AND_CALC_ANSWER[i][0] = String.valueOf(generateNumber(GENERATE_COUNT));
-        QUESTION_AND_CALC_ANSWER[i][1] = isPrime(Integer.parseInt(QUESTION_AND_CALC_ANSWER[i][0])) ? "yes" : "no";
+    public static String[] generateRoundData() {
+        var questionAndCalcAnswer = new String[2];
 
-        return QUESTION_AND_CALC_ANSWER;
+        questionAndCalcAnswer[0] = String.valueOf(generateNumber(NUMBER_LIMIT));
+        questionAndCalcAnswer[1] = isPrime(Integer.parseInt(questionAndCalcAnswer[0])) ? "yes" : "no";
+
+        return questionAndCalcAnswer;
     }
 
     public static void primeGame() {
+        var roundsData = new String[ROUNDS_COUNT][];
 
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
-            generateRoundData(i);
+            roundsData[i] = generateRoundData();
         }
-        startGame(GAME_RULE, QUESTION_AND_CALC_ANSWER);
+        startGame(GAME_RULE, roundsData);
     }
 
     public static boolean isPrime(int number) {
