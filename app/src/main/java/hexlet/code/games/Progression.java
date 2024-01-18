@@ -14,12 +14,12 @@ public class Progression {
     private static final int ORIGIN = 5;
     private static final int NUMBER_LIMIT = 11;
     private static final String GAME_RULE = "What number is missing in the progression?";
-    private static final Random random = new Random();
+    private static final Random RANDOM = new Random();
     private static int[] progression;
 
     private static String[] generateRoundData() {
 
-        int length = random.nextInt(ORIGIN, NUMBER_LIMIT);
+        int length = RANDOM.nextInt(ORIGIN, NUMBER_LIMIT);
         progression = new int[length];
 
         int firstNumber = generateNumber(NUMBER_LIMIT);
