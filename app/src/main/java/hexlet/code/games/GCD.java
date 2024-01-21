@@ -3,7 +3,7 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 import static hexlet.code.Engine.ROUNDS_COUNT;
-import static hexlet.code.Engine.startGame;
+import static hexlet.code.Engine.run;
 import static hexlet.code.Utils.generateNumber;
 
 
@@ -18,7 +18,7 @@ public class GCD {
         var secondNum = generateNumber(NUMBER_LIMIT);
 
         questionAndCalcAnswer[0] = (firstNum + " " + secondNum);
-        questionAndCalcAnswer[1] = String.valueOf(gcdAlgorithm(firstNum, secondNum));
+        questionAndCalcAnswer[1] = String.valueOf(calculateGcd(firstNum, secondNum));
 
         return questionAndCalcAnswer;
     }
@@ -31,10 +31,10 @@ public class GCD {
             roundsData[i] = generateRoundData();
 
         }
-        startGame(GAME_RULE, roundsData);
+        run(GAME_RULE, roundsData);
     }
 
-    private static int gcdAlgorithm(int first, int second) {
+    private static int calculateGcd(int first, int second) {
         while (first != second) {
             if (first > second) {
                 first = first - second;

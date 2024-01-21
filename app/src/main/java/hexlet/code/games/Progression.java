@@ -5,7 +5,7 @@ import hexlet.code.Engine;
 import java.util.Random;
 
 import static hexlet.code.Engine.ROUNDS_COUNT;
-import static hexlet.code.Engine.startGame;
+import static hexlet.code.Engine.run;
 import static hexlet.code.Utils.generateNumber;
 
 public class Progression {
@@ -15,22 +15,22 @@ public class Progression {
     private static final int NUMBER_LIMIT = 11;
     private static final String GAME_RULE = "What number is missing in the progression?";
     private static final Random RANDOM = new Random();
-    private static int[] progression;
 
     private static String[] generateRoundData() {
-
         int length = RANDOM.nextInt(ORIGIN, NUMBER_LIMIT);
-        progression = new int[length];
 
         int firstNumber = generateNumber(NUMBER_LIMIT);
         int delta = generateNumber(COUNT) + 1;
         var questionAndCalcAnswer = new String[2];
-
         var hiddenIndex = generateNumber(length);
-        var progressionQuestion = buildQuestion(length, firstNumber, delta, hiddenIndex);
+
+        var progression = generateProgression(length, firstNumber, delta);
+        var elementForAnswer = progression[hiddenIndex];
+        progression[hiddenIndex] = "..";
+        var progressionQuestion = String.join(" ", progression);
 
         questionAndCalcAnswer[0] = progressionQuestion;
-        questionAndCalcAnswer[1] = String.valueOf(progression[hiddenIndex]);
+        questionAndCalcAnswer[1] = String.valueOf(elementForAnswer);
 
         return questionAndCalcAnswer;
     }
@@ -41,23 +41,15 @@ public class Progression {
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
             roundsData[i] = generateRoundData();
         }
-        startGame(GAME_RULE, roundsData);
+        run(GAME_RULE, roundsData);
     }
 
-    private static String buildQuestion(int length, int firstNumber, int delta, int hiddenIndex) {
-
+    private static String[] generateProgression(int length, int firstNumber, int delta) {
+        var progression = new String[length];
         for (int i = 0; i < length; i++) {
-            progression[i] = firstNumber + i * delta;
+            progression[i] = String.valueOf(firstNumber + i * delta);
         }
-
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < progression.length; i++) {
-            builder.append(i == hiddenIndex ? ".." : firstNumber + i * delta);
-            if (i != progression.length - 1) {
-                builder.append(" ");
-            }
-        }
-        return builder.toString();
+        return progression;
     }
 
 }

@@ -3,7 +3,7 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 import static hexlet.code.Engine.ROUNDS_COUNT;
-import static hexlet.code.Engine.startGame;
+import static hexlet.code.Engine.run;
 import static hexlet.code.Utils.generateNumber;
 
 public class Calc {
@@ -20,7 +20,7 @@ public class Calc {
         var firstNum = generateNumber(NUMBER_LIMIT);
         var secondNum = generateNumber(NUMBER_LIMIT);
         questionAndCalcAnswer[0] = (firstNum + " " + operator + " " + secondNum);
-        questionAndCalcAnswer[1] = String.valueOf(resultOfOperation(operator, firstNum, secondNum));
+        questionAndCalcAnswer[1] = String.valueOf(calculateResult(operator, firstNum, secondNum));
 
         return questionAndCalcAnswer;
     }
@@ -31,17 +31,16 @@ public class Calc {
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
             roundsData[i] = generateRoundData();
         }
-        startGame(GAME_RULE, roundsData);
+        run(GAME_RULE, roundsData);
     }
 
-    private static int resultOfOperation(String operation, int firstNum, int secondNum) {
+    private static int calculateResult(String operation, int firstNum, int secondNum) {
         return switch (operation) {
             case "+" -> firstNum + secondNum;
             case "-" -> firstNum - secondNum;
             case "*" -> firstNum * secondNum;
-            default -> throw new Error("Unknown operator");
+            default -> throw new RuntimeException("Unknown operator");
         };
     }
-
 
 }

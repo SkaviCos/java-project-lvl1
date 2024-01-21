@@ -3,7 +3,7 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 import static hexlet.code.Engine.ROUNDS_COUNT;
-import static hexlet.code.Engine.startGame;
+import static hexlet.code.Engine.run;
 import static hexlet.code.Utils.generateNumber;
 
 public class Prime {
@@ -27,7 +27,7 @@ public class Prime {
         for (int i = 0; i < Engine.ROUNDS_COUNT; i++) {
             roundsData[i] = generateRoundData();
         }
-        startGame(GAME_RULE, roundsData);
+        run(GAME_RULE, roundsData);
     }
 
     public static boolean isPrime(int number) {

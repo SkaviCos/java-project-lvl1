@@ -7,7 +7,7 @@ public class Engine {
     public static final int ROUNDS_COUNT = 3;
     public static final Scanner SCANNER = new Scanner(System.in);
 
-    public static void startGame(String gameRule, String[][] questionAndCalcAnswer) {
+    public static void run(String gameRule, String[][] questionAndCalcAnswer) {
         var userName = Cli.greeting();
         var answer = "";
         System.out.println(gameRule);
